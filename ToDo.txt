@@ -1,0 +1,11 @@
+To Do:
+ - Finish styling
+   ~ Timeline?
+   ~ Change background colour
+   ~ Order skills
+ - Add interests section
+ - Add media settings for PC
+ - Make it flashier
+   ~ Top bar?
+   ~ Add animations to interests section
+   ~ Link to other projects?
