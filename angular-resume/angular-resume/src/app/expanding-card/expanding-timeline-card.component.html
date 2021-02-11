@@ -1,0 +1,12 @@
+<div class="container">
+  <div #collapsible>
+  <ul *ngIf="!this.expanded" >
+    <li>{{responsibilities[0]}}</li>
+    <li>{{responsibilities[1]}}</li>
+  </ul>
+  <ul *ngIf="this.expanded" class="expanding-timeline-card_content">
+    <li *ngFor="let responsibility of responsibilities">{{responsibility}}</li>
+  </ul>
+  </div>
+</div>
+<button (click)="toggleExpanded()">show/hide</button>
