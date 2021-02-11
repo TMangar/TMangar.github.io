@@ -18,7 +18,7 @@
   background-color: #00A0E9;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: 5%;
   margin-left: -3px;
 }
 
@@ -27,7 +27,6 @@
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
-  width: 50%;
 }
 
 /* The circles on the timeline */
@@ -51,7 +50,7 @@
 
 /* Place the container to the right */
 .right {
-  left: 50%;
+  left: 5%;
 }
 
 /* Add arrows to the left container (pointing right) */

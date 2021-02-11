@@ -1,12 +1,13 @@
-import {AfterContentChecked, AfterContentInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild, AfterViewInit} from '@angular/core';
 import {
-  AUTO_STYLE,
   trigger,
   state,
   style,
   animate,
-  transition
+  transition, AUTO_STYLE
 } from '@angular/animations';
+
+const ExtraSpacing = 25;
 
 @Component({
   selector: 'app-expanding-timeline-card',
@@ -14,92 +15,47 @@ import {
   styleUrls: ['./expanding-timeline-card.component.scss'],
   animations: [
     trigger('expand', [
-      state('true', style({ height: 300})),
-      state('false', style({ height: 800})),
-      transition('false => true', animate( '600ms ease-out')),
-      transition('true => false', animate('600ms ease-in'))
-    ])
+      state('true', style({
+        height: '{{expandedHeight}}'
+      }), {params: {expandedHeight: AUTO_STYLE}}),
+      state('false', style({
+        height: '{{collapsedHeight}}'
+      }), {params: {collapsedHeight: AUTO_STYLE}}),
+      transition('true => false', [
+        animate('0.5s ease-out')
+      ]),
+      transition('false => true', [
+        animate('0.5s ease-in')
+      ]),
+    ]),
   ]
 })
 
-export class ExpandingTimelineCardComponent {
+export class ExpandingTimelineCardComponent implements AfterViewInit {
   @Input() responsibilities: string[];
   @ViewChild('big') big: ElementRef;
   @ViewChild('small') small: ElementRef;
-  @ViewChild('rest') rest: ElementRef;
 
   public expanded: boolean = false;
-  public contentSize: any;
+  public expandedHeight: string;
+  public collapsedHeight: string;
 
-  // This is the important part!
-
-  collapseSection(element) {
-    // temporarily disable all css transitions
-    var elementTransition = element.style.transition;
-    element.style.transition = '';
-
-    // on the next frame (as soon as the previous style change has taken effect),
-    // explicitly set the element's height to its current pixel height, so we
-    // aren't transitioning out of 'auto'
-    requestAnimationFrame(() => {
-      element.style.height = this.small.nativeElement.scrollHeight + 'px';
-      element.style.transition = elementTransition;
-
-      // on the next frame (as soon as the previous style change has taken effect),
-      // have the element transition to height: 0
-      requestAnimationFrame(() => {
-        element.style.height = this.small.nativeElement.scrollHeight + 'px';
-      });
-    });
-
-    // mark the section as "currently collapsed"
-    element.setAttribute('data-collapsed', 'true');
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.collapsedHeight = this.small.nativeElement.scrollHeight + ExtraSpacing + 'px';
+      this.expandedHeight = this.big.nativeElement.scrollHeight + ExtraSpacing + 'px';
+    }, 25)
   }
 
-  expandSection(element) {
-    // have the element transition to the height of its inner content
-    element.style.height = this.big.nativeElement.scrollHeight + 'px';
+  public getExpandedHeight() {
+    return this.big.nativeElement.scrollHeight + ExtraSpacing + 'px';
+  }
 
-    // when the next css transition finishes (which should be the one we just triggered)
-    function myFunc() {
-      // remove this event listener so it only gets triggered once
-      element.removeEventListener('transitionend', myFunc);
-    }
-
-    // when the next css transition finishes (which should be the one we just triggered)
-    element.addEventListener('transitionend', myFunc);
-
-    element.style.height = null;
+  public getCollapsedHeight() {
+    return this.small.nativeElement.scrollHeight + ExtraSpacing + 'px';
   }
 
   toggleExpanded() {
     this.expanded = !this.expanded;
-
-    var section = this.big;
-    var isCollapsed = section.nativeElement.getAttribute('data-collapsed') === 'true';
-
-    if(isCollapsed) {
-      this.expandSection(section.nativeElement)
-      section.nativeElement.setAttribute('data-collapsed', 'false')
-    } else {
-      this.collapseSection(section.nativeElement)
-    }
-  }
-
-  ngAfterContentChecked(): void {
-  //   console.log(document.querySelector('.section.collapsible').scrollHeight)
-  //   if(document.querySelector('.section.collapsible').scrollHeight !== this.contentSize)
-  //   {
-  //     this.contentSize = document.querySelector('.section.collapsible').scrollHeight;
-  //     var section = document.querySelector('.section.collapsible');
-  //     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
-  //
-  //     if(isCollapsed) {
-  //       this.expandSection(section)
-  //       section.setAttribute('data-collapsed', 'false')
-  //     } else {
-  //       this.collapseSection(section)
-  //     }
-  //   }
   }
 }

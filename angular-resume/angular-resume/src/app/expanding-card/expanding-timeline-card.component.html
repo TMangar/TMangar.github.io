@@ -1,12 +1,12 @@
 <div class="container">
-  <div #big class="expanding-timeline-card_big" style="transition:height 0.3s ease-out">
-    <div #small class="expanding-timeline-card_small"  style="transition:height 0.3s ease-out">
+  <div #big class="expanding-timeline-card_big" [@expand]="{value: expanded, params:{expandedHeight: expandedHeight, collapsedHeight: collapsedHeight}}">
+    <div #small class="expanding-timeline-card_small">
       <ul>
         <li>{{responsibilities[0]}}</li>
         <li>{{responsibilities[1]}}</li>
       </ul>
     </div>
-    <div #rest class="expanding-timeline-card_rest"  style="transition:height 0.3s ease-out">
+    <div class="expanding-timeline-card_rest">
       <ul>
         <li *ngFor="let responsibility of responsibilities | slice:2">{{responsibility}}</li>
       </ul>
