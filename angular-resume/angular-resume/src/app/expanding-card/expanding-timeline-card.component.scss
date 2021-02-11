@@ -1,8 +1,14 @@
-.container {
-
-.section {
-  overflow:hidden;
-  transition:height 0.3s ease-out;
-  height:auto;
+.expanding-timeline-card_rest {
+  overflow: hidden;
+  transition:height 0.3s ease-out
 }
+
+.expanding-timeline-card_big {
+  overflow: hidden;
+  transition:height 0.3s ease-out
+}
+
+.expanding-timeline-card_small {
+  overflow: hidden;
+  transition:height 0.3s ease-out
 }

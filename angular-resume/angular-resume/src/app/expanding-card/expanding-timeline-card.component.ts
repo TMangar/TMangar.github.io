@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterContentChecked, AfterContentInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {
   AUTO_STYLE,
   trigger,
@@ -14,24 +14,22 @@ import {
   styleUrls: ['./expanding-timeline-card.component.scss'],
   animations: [
     trigger('expand', [
-      state('false', style({ height: 300})),
-      state('true', style({ height: 800})),
+      state('true', style({ height: 300})),
+      state('false', style({ height: 800})),
       transition('false => true', animate( '600ms ease-out')),
       transition('true => false', animate('600ms ease-in'))
     ])
   ]
 })
 
-export class ExpandingTimelineCardComponent implements AfterContentInit {
+export class ExpandingTimelineCardComponent {
   @Input() responsibilities: string[];
-  @ViewChild('collapsible') collapsibleElement: ElementRef;
+  @ViewChild('big') big: ElementRef;
+  @ViewChild('small') small: ElementRef;
+  @ViewChild('rest') rest: ElementRef;
 
   public expanded: boolean = false;
   public contentSize: any;
-
-  ngAfterContentInit(): void{
-    this.collapsibleElement.nativeElement.setAttribute('data-collapsed', 'true')
-  }
 
   // This is the important part!
 
@@ -44,13 +42,13 @@ export class ExpandingTimelineCardComponent implements AfterContentInit {
     // explicitly set the element's height to its current pixel height, so we
     // aren't transitioning out of 'auto'
     requestAnimationFrame(() => {
-      element.style.height = this.collapsibleElement.nativeElement.scrollHeight + 'px';
+      element.style.height = this.small.nativeElement.scrollHeight + 'px';
       element.style.transition = elementTransition;
 
       // on the next frame (as soon as the previous style change has taken effect),
       // have the element transition to height: 0
       requestAnimationFrame(() => {
-        element.style.height = this.collapsibleElement.nativeElement.scrollHeight + 'px';
+        element.style.height = this.small.nativeElement.scrollHeight + 'px';
       });
     });
 
@@ -60,7 +58,7 @@ export class ExpandingTimelineCardComponent implements AfterContentInit {
 
   expandSection(element) {
     // have the element transition to the height of its inner content
-    element.style.height = this.collapsibleElement.nativeElement.scrollHeight + 'px';
+    element.style.height = this.big.nativeElement.scrollHeight + 'px';
 
     // when the next css transition finishes (which should be the one we just triggered)
     function myFunc() {
@@ -77,7 +75,7 @@ export class ExpandingTimelineCardComponent implements AfterContentInit {
   toggleExpanded() {
     this.expanded = !this.expanded;
 
-    var section = this.collapsibleElement;
+    var section = this.big;
     var isCollapsed = section.nativeElement.getAttribute('data-collapsed') === 'true';
 
     if(isCollapsed) {
