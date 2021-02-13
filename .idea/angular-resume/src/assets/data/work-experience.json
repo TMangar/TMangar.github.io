@@ -1,0 +1,26 @@
+﻿[
+  {
+    "header": "Full-Stack Software Engineer | ENSEK May 2019 - Present",
+    "blurb": ["Working within the energy industry to assist various energy suppliers from small independent customers to the Big 6.","I started off in the Customer Management team developing and maintaining features such as the complaints process, the customer signup process, and meter readings, as well as working on custom client websites.","I was then moved into the International team to push our products into new geographies by adding internationalisation to our systems for both currency and language, and to add new features specific to the regions we expanded into."],
+    "responsibilities": [
+      "Developing and maintaining bespoke client websites from branding guidelines.",
+      "Creating and maintaining back-end solutions and integrating with AWS microservices.",
+      "Internationalisation of our clients’ websites to enable growth and expansion into the international market.",
+      "Responsible for adhering to SOLID principles, writing clean code and ensuring that these ideals are maintained across the code base through peer reviews.",
+      "Working with Product Owners and Business Analysts to size and refine work items to help facilitate confident commitments to sprints.",
+      "Assisting with deployments for UAT and addressing any issues found during testing."
+    ]
+  },
+  {
+    "header": "Software Engineer | PAREXEL Aug 2015 - May 2019",
+    "blurb": ["Working within one of the premier companies in pharmaceutical CRM technology, I was responsible for building software to manage complex medical trials for some of the largest pharmaceutical companies in the world.","I worked closely with Solution Designers and Project Managers to develop custom medical trial systems, maintain customer confidence, and to help make day to day running smoother through the creation and maintenance of internal tools."],
+    "responsibilities": [
+      "Actively engaged with the client and Client Services to deliver high profile, new technological solutions for clients allowing them to integrate new processes to reduce drug wastage and introduce complex medication temperature tracking, in addition to delivering multiple complex projects.",
+      "Continued to support the Client Services team throughout all stages of project lifespan, including participating in client meetings and UAT (user acceptance testing).",
+      "Worked with both Solutions Designers and Project Managers to maintain a high quality and consistent approach to project design across multiple projects using similar, complex bespoke functionality.",
+      "Identified gaps in and led initiatives to eliminate the weaknesses from existing internal processes. Worked to roll out these initiatives, create supporting documentation and resources which continue to be used by Software Engineers within the department.",
+      "Constantly manage time-sensitive projects with changeable priorities and delivery dates in a proactive manner.",
+      "Maintained a positive and friendly attitude in difficult situations, including delivering difficult feedback to the Client Services team which would have consequences in client communications and relationships."
+    ]
+  }
+]

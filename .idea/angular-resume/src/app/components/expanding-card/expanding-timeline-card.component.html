@@ -1,0 +1,16 @@
+<div class="expanding-timeline-card_container">
+  <div #big class="expanding-timeline-card_big" [@expand]="{value: expanded, params:{expandedHeight: expandedHeight, collapsedHeight: collapsedHeight}}">
+    <div #small class="expanding-timeline-card_small">
+      <div  *ngFor="let paragraph of blurb">
+        <p>{{paragraph}}</p>
+      </div>
+    </div>
+    <div class="expanding-timeline-card_rest">
+      <ul class="expanding-timeline-card_open">
+        <li *ngFor="let responsibility of responsibilities">{{responsibility}}</li>
+      </ul>
+    </div>
+  </div>
+  <button *ngIf="!expanded" class="expanding-timeline-card_button" (click)="toggleExpanded()">See More ▼</button>
+  <button *ngIf="expanded" class="expanding-timeline-card_button" (click)="toggleExpanded()">See Less ▲</button>
+</div>
