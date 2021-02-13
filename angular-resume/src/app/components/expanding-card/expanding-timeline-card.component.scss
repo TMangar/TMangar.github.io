@@ -31,7 +31,22 @@
   color: white;
   font-size: 16px;
   font-family: Roboto, serif;
-  grid-column-start: 4;
+  grid-column: 3/5;
   padding: 5px;
+  min-width:100px;
+}
+
+@media (min-device-width: 600px) {
+  .expanding-timeline-card_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  .expanding-timeline-card_big {
+    grid-column: span 8;
+  }
+
+  .expanding-timeline-card_button {
+    grid-column: 7/8;
+  }
 }
 

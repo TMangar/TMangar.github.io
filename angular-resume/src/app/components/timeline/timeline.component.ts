@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WorkExperience} from "../../models/work-experience";
-import {HttpClient} from "@angular/common/http";
+import {WorkExperienceService} from "../../services/work-experience.service";
 
 @Component({
   selector: 'app-timeline',
@@ -11,11 +11,11 @@ export class TimelineComponent implements OnInit {
 
   jobs: WorkExperience[];
 
-  constructor(private http: HttpClient) {
+  constructor(private workExperienceService: WorkExperienceService) {
   }
 
   ngOnInit(): void {
-    this.http.get('assets/data/work-experience.json').subscribe((result: WorkExperience[]) => {
+    this.workExperienceService.getWorkExperience().subscribe((result: WorkExperience[]) => {
       this.jobs = result;
     })
   }

@@ -1,9 +1,6 @@
 To Do:
  - Finish styling
-   ~ Timeline?
-   ~ Change background colour
-   ~ Order skills
- - Add interests section
+   ~ Arrange skills for PC viewing
  - Add media settings for PC
  - Make it flashier
    ~ Top bar?
