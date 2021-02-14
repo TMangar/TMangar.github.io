@@ -7,7 +7,7 @@
   position: relative;
   max-width: 1200px;
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 0;
   grid-column: 2/8;
 }
 
@@ -42,7 +42,7 @@
 
 /* Container around content */
 .timeline-container {
-  padding: 10px 40px;
+  padding: 10px 0 10px 35px;
   position: relative;
   background-color: inherit;
 }
@@ -104,12 +104,16 @@
 
 /* The actual content */
 .timeline-content {
-  padding: 20px 30px;
+  padding: 10px 10px;
   background-color: white;
   position: relative;
   border-radius: 6px;
   margin-left: 20px;
-  min-width:300px;
+  min-width:200px;
+}
+
+h3 {
+  font-size: 16px;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
@@ -151,7 +155,6 @@
   bottom: 36px;
   left: 10px;
   box-shadow: 3px 3px 8px rgba(0,0,0,.4);
-
 }
 
 .header-card_title {
@@ -162,5 +165,17 @@
 @media (min-device-width: 600px) {
   .timeline-content {
     margin-left: 0;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    grid-column: 2/8;
+  }
+
+  h3 {
+    font-size: 1.17em;
   }
 }
